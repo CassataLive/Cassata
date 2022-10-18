@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/thumbnail"/>
+
+    <ImageButton
+        android:id="@+id/cancel"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_baseline_cancel_24"
+        />
+
+    <ImageButton
+        android:id="@+id/expo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_baseline_exposure_24"
+        />
+
+    <ImageButton
+        android:id="@+id/flash"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/expo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_baseline_flash_on_24"
+        />
+
+    <TextView
+        android:id="@+id/zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageButton
+        android:id="@+id/share"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/flash"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_baseline_share_24"
+        />
+
+    <ImageButton
+        android:id="@+id/cast"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/share"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_baseline_cast_24"
+        />
+
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderExposure"
+        android:layout_width="196dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:progressBackgroundTint="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
