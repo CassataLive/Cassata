@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var camera:androidx.camera.core.Camera
+    private lateinit var camera: androidx.camera.core.Camera
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String?>
     private var shortAnimationDuration: Int = 0
     private var slider: Boolean = true
@@ -149,13 +149,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SuspiciousIndentation")
-    private fun startCamera(){
+    private fun startCamera() {
         lifecycleScope.launch {
-            val cameraProvider: ProcessCameraProvider = ProcessCameraProvider.getInstance(application).await()
+            val cameraProvider: ProcessCameraProvider =
+                ProcessCameraProvider.getInstance(application).await()
 
             // Select back camera as a default
             val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
-                 preview = Preview.Builder()
+            preview = Preview.Builder()
                 .build()
                 .also {
                     it.setSurfaceProvider(binding.previewView.surfaceProvider)
@@ -165,7 +166,8 @@ class MainActivity : AppCompatActivity() {
                 cameraProvider.unbindAll()
 
                 // Bind use cases to camera
-              camera = cameraProvider.bindToLifecycle(this@MainActivity,cameraSelector,preview
+                camera = cameraProvider.bindToLifecycle(
+                    this@MainActivity, cameraSelector, preview
                 )
                 flashLight()
                 getZoom()
@@ -177,6 +179,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun flashLight() = with(binding) {
         camera.apply {
             if (cameraInfo.hasFlashUnit()) {
@@ -231,7 +234,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun crossFade(){
+    private fun crossFade() {
         binding.cancel.apply {
             alpha = 0f
             visibility = View.VISIBLE
@@ -252,7 +255,7 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    private fun crossFade2(){
+    private fun crossFade2() {
         binding.logo.apply {
             alpha = 0f
             visibility = View.VISIBLE
@@ -273,7 +276,7 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
-    private fun visible(){
+    private fun visible() {
         binding.apply {
             flash.visibility = View.VISIBLE
             expo.visibility = View.VISIBLE
@@ -283,7 +286,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun visibleGo(){
+    private fun visibleGo() {
         binding.apply {
             flash.visibility = View.GONE
             expo.visibility = View.GONE
@@ -292,19 +295,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun intentShare(){
+    private fun intentShare() {
         val msg = "For download Cassata app just click below the link:\n " +
                 "https://www.google.com"
         val sendIntent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT,msg)
+            putExtra(Intent.EXTRA_TEXT, msg)
             type = "text/plain"
         }
 
         try {
             startActivity(sendIntent)
-        }catch (e:Exception){
-            Log.d("intent","failed:$e")
+        } catch (e: Exception) {
+            Log.d("intent", "failed:$e")
         }
     }
 
